@@ -1,5 +1,6 @@
 import javax.swing.Icon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Ventana6 extends JFrame{
@@ -17,7 +18,7 @@ public class Ventana6 extends JFrame{
 	class PanelFoto extends JPanel {
 		
 		public PanelFoto() {
-			
+			JLabel imagenZapatillaPrincipal = new kjhgksdf;
 		}
 	}
 }
