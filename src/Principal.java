@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 public class Principal {
 
@@ -5,6 +9,9 @@ public class Principal {
 		// TODO Auto-generated method stub
 		
 		Zapato zapatoPablo = new Zapato();
+		ArrayList<ImageIcon> listaImagenes = new ArrayList<ImageIcon>();
+		listaImagenes.add(new ImageIcon("v1.png"));
+		zapatoPablo.setLista(listaImagenes);
 		
 		new Ventana6(zapatoPablo);
 		

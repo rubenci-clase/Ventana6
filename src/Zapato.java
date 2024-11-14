@@ -6,6 +6,7 @@
 
 import java.util.ArrayList;
 import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -16,14 +17,14 @@ public class Zapato {
     String modelo,color,marca,tipoSuela,estilo,tipo,genero,valoracion,descripcion,temporada;
     float talla,precio;
     boolean oferta,hayEnStock;
-    ArrayList<Icon> lista;
+    ArrayList<ImageIcon> lista;
     int stock;
     
     public Zapato(){
         
     }
 
-    public Zapato(String modelo, String color, String marca, String tipoSuela, String estilo, String tipo, String genero, String valoracion, String descripcion, String temporada, float talla, float precio, boolean oferta, boolean hayEnStock, ArrayList<Icon> lista) {
+    public Zapato(String modelo, String color, String marca, String tipoSuela, String estilo, String tipo, String genero, String valoracion, String descripcion, String temporada, float talla, float precio, boolean oferta, boolean hayEnStock, ArrayList<ImageIcon> lista) {
         this.modelo = modelo;
         this.color = color;
         this.marca = marca;
@@ -155,11 +156,11 @@ public class Zapato {
         this.hayEnStock = hayEnStock;
     }
 
-    public ArrayList<Icon> getLista() {
+    public ArrayList<ImageIcon> getLista() {
         return lista;
     }
 
-    public void setLista(ArrayList<Icon> lista) {
+    public void setLista(ArrayList<ImageIcon> lista) {
         this.lista = lista;
     }
 
@@ -171,7 +172,7 @@ public class Zapato {
         this.stock = stock;
     }
     
-    public void añadirImagen (Icon image) {
+    public void añadirImagen (ImageIcon image) {
     	lista.add(image);
     }
     
