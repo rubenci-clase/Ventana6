@@ -2,6 +2,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,36 +21,51 @@ import javax.swing.JPanel;
 public class Ventana6 extends JFrame{
 	Color naranja = new Color(254, 153, 0);
 	Zapato zapato;
-
+	JButton botonVolverAPantallaAnterior;
+	
 	public Ventana6(Zapato zapato) {
 		this.zapato = zapato;
 		setResizable(false);
 		setSize(393,852);
-		setLayout(new BorderLayout());
+		setLayout(new GridBagLayout());
 		
-		add(new PanelBotonSuperiorSalir(), BorderLayout.NORTH);
-		add(new PanelFoto(), BorderLayout.CENTER);
 		
+		Image img = null;
+		try {
+			img = ImageIO.read(new File("flecha.png")).getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+		}
+		
+		botonVolverAPantallaAnterior = new JButton(new ImageIcon(img));
+		botonVolverAPantallaAnterior.setBackground(Color.WHITE);
+		add(botonVolverAPantallaAnterior);
+		
+		GridBagConstraints constraints = new GridBagConstraints();
+
+		add(new botonVolverAPantallaAnterior(constraints), constraints);
+		
+		add(new ImagenZapatilla(zapato.lista.get(0), constraints), constraints);
+
 		setVisible(true);
 		
 	}
 	
-	class PanelBotonSuperiorSalir extends JPanel implements ActionListener{
+	class botonVolverAPantallaAnterior extends JButton implements ActionListener{
 		
-		public PanelBotonSuperiorSalir(){
-			setLayout(new FlowLayout(FlowLayout.LEFT));
+		public botonVolverAPantallaAnterior(GridBagConstraints constraints){
+			constraints.gridx = 0; // El área de texto empieza en la columna cero.
+			constraints.gridy = 0; // El área de texto empieza en la fila cero
+			constraints.gridwidth = 1; // El área de texto ocupa dos columnas.
+			constraints.gridheight = 1; // El área de texto ocupa 2 filas.
+			
 			Image img = null;
+			
 			try {
 				img = ImageIO.read(new File("flecha.png")).getScaledInstance(30, 30, Image.SCALE_SMOOTH);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 			}
-			
-			JButton botonVolverAPantallaAnterior = new JButton(new ImageIcon(img));
-			botonVolverAPantallaAnterior.setBackground(Color.WHITE);
-			botonVolverAPantallaAnterior.addActionListener(this);
-			
-			add(botonVolverAPantallaAnterior);
 		}
 
 		@Override
@@ -58,20 +75,23 @@ public class Ventana6 extends JFrame{
 		}
 	}
 	
-	class PanelFoto extends JPanel{
+	class ImagenZapatilla extends JLabel{
 		
-		Image imagenRedimensionada;
-		
-		public PanelFoto() {
-			imagenRedimensionada = zapato.getLista().get(0).getImage();
-			imagenRedimensionada.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+		public ImagenZapatilla(ImageIcon img, GridBagConstraints constraints) {
+			super(CambiarTamaño(img));
+			
+			constraints.gridx = 0; // El área de texto empieza en la columna cero.
+			constraints.gridy = 1; // El área de texto empieza en la fila cero
+			constraints.gridwidth = 4; // El área de texto ocupa dos columnas.
+			constraints.gridheight = 4; // El área de texto ocupa 2 filas.
 
 		}
 		
-		public void paintComponent(Graphics g) {
-			g.drawImage(imagenRedimensionada, 0, 0, 393, 320, 0, 0, 393, 393, null);
+		public static ImageIcon CambiarTamaño(ImageIcon img) {
+			Image imagenReescalada = img.getImage().getScaledInstance(393, 300, Image.SCALE_SMOOTH);
+			
+			return new ImageIcon(imagenReescalada);
 		}
-		
 		
 	}
 	
