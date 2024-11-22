@@ -69,7 +69,7 @@ public class Ventana6 extends JFrame{
 		}
 		
 		public void paintComponent(Graphics g) {
-			g.drawImage(imagenRedimensionada, 0, 0, 393, 393, 0, 0, 393, 393, null);
+			g.drawImage(imagenRedimensionada, 0, 0, 393, 320, 0, 0, 393, 393, null);
 		}
 		
 		
